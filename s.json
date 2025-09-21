@@ -1,0 +1,32 @@
+{
+  "route": {
+    "rules": [
+      {
+        "app": [
+          "com.scb.phone",
+          "com.kasikornbank.kplus",
+          "com.krungthai.next",
+          "com.bbl.mobilebanking",
+          "com.krungsri.kma",
+          "com.ttbbank.ghb",
+          "com.ttb.touch",
+          "com.ktbnetbank.ktb",
+          "com.kfit.kbank",
+          "com.ktc.mobileapp",
+          "com.gsb.gsb",
+          "com.cimb.cimbth",
+          "com.uob.th.mobile",
+          "com.ghbank.mobile",
+          "com.scb.mobile",
+          "com.truemoney.wallet",
+          "th.co.truewallet",
+          "com.truecorp.wallet",
+          "com.gcpb.mobile",
+          "com.paywithbank.app"
+        ],
+        "outbound": "direct"
+      }
+    ],
+    "final": "proxy"
+  }
+}
