@@ -1,506 +1,227 @@
 {
-  "route": {
-    "rules": [
-      {
-        "packageName": [
-          "com.scb.phone",
-          "com.kasikorn.retail.mbanking.wap",
-          "ktbcs.netbank",
-          "com.bbl.mobilebanking",
-          "com.mobilife.gsb.mymo",
-          "th.co.truemoney.wallet",
-          "com.krungsri.kma",
-          "com.kkp.kkpmobile",
-          "com.TMBTOUCH.PRODUCTION",
-          "com.tisconet.mba",
-          "com.nebula.karing",
-          "com.ktb.next",
-          "com.uob.mightyth2",
-          "th.com.cimb.MyCIMB",
-          "com.lh.lhbu",
-          "com.icbc.mobile.abroadbank"
-        ],
-        "outbound": "DIRECT",
-        "comment": "Package/bundle rule: bank apps (Android verified + iOS placeholders) -> DIRECT. Replace iOS placeholders with exact bundle ids from App Store/device for best results. (updated with iOS bundle IDs)"
-      },
-      {
-        "packageName": [
-          "com.scb.phone",
-          "com.kasikorn.retail.mbanking.wap",
-          "ktbcs.netbank",
-          "com.bbl.mobilebanking",
-          "com.mobilife.gsb.mymo",
-          "th.co.truemoney.wallet",
-          "com.krungsri.kma",
-          "com.kkp.kkpmobile",
-          "com.TMBTOUCH.PRODUCTION",
-          "com.tisconet.mba",
-          "com.uob.mightyth2",
-          "th.com.cimb.MyCIMB",
-          "com.lh.lhbu",
-          "com.icbc.mobile.abroadbank",
-          "com.nebula.karing",
-          "com.ktb.next"
-        ],
-        "outbound": "MODE-BANKING",
-        "comment": "If bank app package => force MODE-BANKING selector (prefer DIRECT)"
-      },
-      {
-        "domain_keyword": [
-          "scb",
-          "kbank",
-          "ktb",
-          "ttb",
-          "gsb",
-          "mymo",
-          "krungthai",
-          "kasikorn",
-          "bbl",
-          "krungsri",
-          "kkp",
-          "tisco",
-          "truemoney",
-          "tmn",
-          "uob",
-          "cimb",
-          "lh",
-          "icbc"
-        ],
-        "outbound": "MODE-BANKING",
-        "comment": "If destination domain contains bank keywords => MODE-BANKING"
-      },
-      {
-        "domain_keyword": [
-          "rov",
-          "garena",
-          "pubg",
-          "battlegrounds",
-          "mlbb",
-          "mobilelegends",
-          "game",
-          "garena"
-        ],
-        "outbound": "MODE-GAMING",
-        "comment": "Gaming heuristics -> MODE-GAMING limited nodes"
-      },
-      {
-        "packageName": [
-          "com.garena.game.khon",
-          "com.tencent.ig",
-          "com.pubg.krmobile",
-          "com.mobile.legends"
-        ],
-        "outbound": "MODE-GAMING",
-        "comment": "Gaming package examples -> MODE-GAMING"
-      },
-      {
-        "port": "1024-65535",
-        "protocol": "udp",
-        "outbound": "GAMING-LOWLAT-FALLBACK",
-        "comment": "UDP traffic fallback -> GAMING-LOWLAT-FALLBACK (used for gaming UDP flows)"
-      },
-      {
-        "domain_keyword": [
-          "youtube",
-          "netflix",
-          "twitch",
-          "m3u8",
-          "hls",
-          "primevideo",
-          "disney",
-          "hotstar",
-          "netflix",
-          "spotify",
-          "apple"
-        ],
-        "outbound": "MODE-STREAMING",
-        "comment": "Streaming heuristics -> MODE-STREAMING"
-      },
-      {
-        "domain_keyword": [
-          "lh",
-          "scb",
-          "phone",
-          "kasikorn",
-          "mbanking",
-          "ktbcs",
-          "netbank",
-          "bbl",
-          "mobilebanking",
-          "mobilife",
-          "gsb",
-          "mymo",
-          "truemoney",
-          "wallet",
-          "krungsri",
-          "kma",
-          "kkp",
-          "kkpmobile",
-          "tmbtouch",
-          "tisconet",
-          "mba",
-          "nebula",
-          "karing",
-          "ktb",
-          "next",
-          "uob",
-          "mightyth2",
-          "cimb",
-          "mycimb",
-          "lhbu",
-          "icbc",
-          "kbank",
-          "ttb",
-          "krungthai",
-          "kasikornbank",
-          "bangkokbank",
-          "tisco",
-          "tmn",
-          "truewallet"
-        ],
-        "outbound": "DIRECT",
-        "comment": "Auto-generated domain_keyword rule derived from package/bundle ids (no dots) -> DIRECT"
-      },
-      {
-        "domain_suffix": [
-          "scb",
-          "kbank",
-          "ktb",
-          "ttb",
-          "gsb",
-          "mymo",
-          "krungthai",
-          "kasikorn",
-          "kasikornbank",
-          "bangkokbank",
-          "bbl",
-          "krungsri",
-          "kkp",
-          "tisco",
-          "truemoney",
-          "tmn",
-          "truewallet",
-          "bank"
-        ],
-        "outbound": "DIRECT",
-        "comment": "AGGRESSIVE bank-keyword matching -> DIRECT (bare keywords only)"
-      },
-      {
-        "domain_suffix": [
-          "krungthai.com",
-          "ktb.co.th",
-          "kbank.co.th",
-          "scb.co.th",
-          "krungsri.com",
-          "bangkokbank.com",
-          "bbl.co.th",
-          "ttb.co.th",
-          "kkp.co.th",
-          "tisco.co.th",
-          "truemoney.com",
-          "tmn.app",
-          "scb.co",
-          "kbank.co",
-          "bbl.co"
-        ],
-        "outbound": "DIRECT",
-        "comment": "BANK domains -> DIRECT (highest priority for Bank-App-Focus)"
-      },
-      {
-        "domain_regex": [
-          "(?i)(?:^|\\\\.)(scb|kbank|ktb|ttb|gsb|mymo|krungthai|kasikorn|kasikornbank|bangkokbank|bbl|krungsri|kkp|tisco|truemoney|tmn|truewallet)(?:\\.|$)"
-        ],
-        "outbound": "DIRECT",
-        "comment": "Regex bank-keyword matching -> DIRECT (matches bank keywords as full labels or label boundaries)"
-      },
-      {
-        "domain": [
-          "api.newnext.krungthai.com"
-        ],
-        "outbound": "DIRECT",
-        "comment": "Bank-App allow host api.newnext.krungthai.com -> DIRECT"
-      },
-      {
-        "domain": [
-          "kasikornbanklifestyle.com"
-        ],
-        "outbound": "DIRECT",
-        "comment": "Bank-App allow host kasikornbanklifestyle.com -> DIRECT"
-      },
-      {
-        "domain": [
-          "kasikornbankpubliccompany.sc.omtrdc.net"
-        ],
-        "outbound": "DIRECT",
-        "comment": "Bank-App allow host kasikornbankpubliccompany.sc.omtrdc.net -> DIRECT"
-      },
-      {
-        "domain": [
-          "api.kasikornbank.co.th"
-        ],
-        "outbound": "DIRECT",
-        "comment": "Bank-App allow host api.kasikornbank.co.th -> DIRECT"
-      },
-      {
-        "domain": [
-          "api.ktb.co.th"
-        ],
-        "outbound": "DIRECT",
-        "comment": "Bank-App allow host api.ktb.co.th -> DIRECT"
-      },
-      {
-        "domain": [
-          "mtalk.google.com"
-        ],
-        "port": "5228",
-        "protocol": "tcp",
-        "outbound": "DIRECT",
-        "comment": "Allow FCM push for bank app"
-      },
-      {
-        "domain_suffix": [
-          "googleapis.com",
-          "gstatic.com",
-          "firebase.googleapis.com",
-          "play.googleapis.com",
-          "play-fe.googleapis.com",
-          "i.ytimg.com",
-          "storage.googleapis.com",
-          "youtube.com",
-          "youtubei.googleapis.com"
-        ],
-        "outbound": "DIRECT",
-        "comment": "Allow Google/Firebase/Play endpoints for bank app functionality"
-      },
-      {
-        "domain_suffix": [
-          "app-measurement.com",
-          "appsflyersdk.com",
-          "appsflyer.com",
-          "adjust.com",
-          "onesignal.com",
-          "mixpanel.com",
-          "dpm.demdex.net",
-          "assets.adobedtm.com",
-          "everesttech.net",
-          "omtrdc.net"
-        ],
-        "outbound": "BLOCK",
-        "comment": "Block analytics/trackers even in bank focus"
-      },
-      {
-        "domain": [
-          "api.newnext.krungthai.com"
-        ],
-        "outbound": "DIRECT",
-        "comment": "AUTO-BANK allow api.newnext.krungthai.com -> DIRECT"
-      },
-      {
-        "domain": [
-          "kasikornbanklifestyle.com"
-        ],
-        "outbound": "DIRECT",
-        "comment": "AUTO-BANK allow kasikornbanklifestyle.com -> DIRECT"
-      },
-      {
-        "domain": [
-          "kasikornbankpubliccompany.sc.omtrdc.net"
-        ],
-        "outbound": "DIRECT",
-        "comment": "AUTO-BANK allow kasikornbankpubliccompany.sc.omtrdc.net -> DIRECT"
-      },
-      {
-        "domain": [
-          "mtalk.google.com"
-        ],
-        "port": "5228",
-        "protocol": "tcp",
-        "outbound": "DIRECT",
-        "comment": "Allow mtalk/FCM for push"
-      },
-      {
-        "domain_suffix": [
-          "app-measurement.com",
-          "appsflyersdk.com",
-          "appsflyer.com",
-          "adjust.com",
-          "onesignal.com",
-          "mixpanel.com",
-          "dpm.demdex.net",
-          "assets.adobedtm.com",
-          "everesttech.net",
-          "omtrdc.net"
-        ],
-        "outbound": "BLOCK",
-        "comment": "Block analytics/trackers while banking"
-      },
-      {
-        "inbound": [
-          "dns-in"
-        ],
-        "outbound": "DNS-OUT"
-      },
-      {
-        "domain_suffix": [
-          "netflix.com",
-          "netflix.net",
-          "nflxvideo.net",
-          "video.google.com",
-          "youtube.com",
-          "googlevideo.com",
-          "ytimg.com",
-          "telegram.org",
-          "t.me",
-          "telegram-cdn.org",
-          "tiktok.com",
-          "tiktokcdn.com",
-          "ibytedtos.com",
-          "ibyteimg.com",
-          "byteoversea.com"
-        ],
-        "outbound": "Streaming"
-      },
-      {
-        "domain_suffix": [
-          "garena.com",
-          "garena.co.th",
-          "rov.in.th",
-          "rov.garena.in.th",
-          "aov.garena.com"
-        ],
-        "outbound": "Gaming-ROV"
-      },
-      {
-        "domain_suffix": [
-          "pubgmobile.com",
-          "igamecj.com"
-        ],
-        "outbound": "Gaming-PUBG"
-      },
-      {
-        "domain_suffix": [
-          "riotgames.com",
-          "leagueoflegends.com",
-          "riotcdn.net",
-          "tftactics.gg"
-        ],
-        "outbound": "Gaming-TFT"
-      },
-      {
-        "domain_suffix": [
-          "facebook.com",
-          "fbcdn.net",
-          "instagram.com",
-          "twitter.com",
-          "x.com",
-          "whatsapp.com",
-          "line.me",
-          "discordapp.com",
-          "snapchat.com"
-        ],
-        "outbound": "Social"
-      },
-      {
-        "domain_suffix": [
-          "zoom.us",
-          "zoom.com",
-          "teams.microsoft.com",
-          "skype.com",
-          "meet.google.com"
-        ],
-        "outbound": "Work-Meet"
-      },
-      {
-        "domain_suffix": [
-          "github.com",
-          "gitlab.com",
-          "docker.com",
-          "hub.docker.com",
-          "npmjs.com",
-          "pypi.org",
-          "cloudflare.com",
-          "vercel.com"
-        ],
-        "outbound": "Dev-Cloud"
-      },
-      {
-        "catch_all": true,
-        "outbound": "MODE-BALANCED",
-        "comment": "Default: balanced mode selector"
-      }
-    ]
-  },
-  "dns": {
-    "rules": [
-      {
-        "domain_suffix": [
-          "krungthai.com",
-          "ktb.co.th",
-          "kbank.co.th",
-          "scb.co.th",
-          "krungsri.com",
-          "bangkokbank.com",
-          "bbl.co.th",
-          "ttb.co.th",
-          "kkp.co.th",
-          "tisco.co.th",
-          "truemoney.com",
-          "tmn.app",
-          "scb.co",
-          "kbank.co",
-          "bbl.co"
-        ],
-        "server": "local",
-        "comment": "Resolve bank domains locally (avoid DNS leaks)"
-      },
-      {
-        "domain_suffix": [
-          "googleapis.com",
-          "gstatic.com",
-          "firebase.googleapis.com",
-          "play.googleapis.com",
-          "play-fe.googleapis.com",
-          "i.ytimg.com",
-          "storage.googleapis.com",
-          "youtube.com",
-          "youtubei.googleapis.com"
-        ],
-        "server": "local",
-        "comment": "Resolve Google/Firebase endpoints locally"
-      },
-      {
-        "domain_suffix": [
-          "googleapis.com",
-          "gstatic.com",
-          "youtubei.googleapis.com",
-          "i.ytimg.com",
-          "storage.googleapis.com"
-        ],
-        "server": "local",
-        "comment": "Resolve Google endpoints locally"
-      }
-    ]
-  },
-  "referenced_outbounds": [
-    "BLOCK",
-    "DIRECT",
-    "DNS-OUT",
-    "Dev-Cloud",
-    "GAMING-LOWLAT-FALLBACK",
-    "Gaming-PUBG",
-    "Gaming-ROV",
-    "Gaming-TFT",
-    "MODE-BALANCED",
-    "MODE-BANKING",
-    "MODE-GAMING",
-    "MODE-STREAMING",
-    "Social",
-    "Streaming",
-    "Work-Meet"
-  ],
-  "meta": {
-    "source_file": "singbox_1.6.1_4modes_35nodes.json",
-    "extracted_at": "2025-09-23 02:15:33",
-    "notes": "This file contains route.rules and dns.rules extracted from the full sing-box config. Order of rules is preserved and is important. Import into Karing app's rule section. If Karing expects different field names, you may need to adapt keys (e.g., 'domain_suffix' vs 'domain-suffix')."
-  }
+  "rules": [
+    {
+      "outbound": "direct",
+      "name": "bank",
+      "switch": true,
+      "or": false,
+      "domain_keyword": [
+        "gsb"
+      ],
+      "rule_set": [
+        "https://raw.githubusercontent.com/lnw007xyz/File/main/singbox_1.6.1_rules_only.json"
+      ]
+    },
+    {
+      "outbound": "direct",
+      "name": "Gaming",
+      "switch": true,
+      "or": true,
+
+      "domain": [
+        "rov.garena.in.th",
+        "aov.garena.com",
+        "api.garena.com",
+        "pubgmobile.com",
+        "igamecj.com",
+        "riotgames.com",
+        "leagueoflegends.com",
+        "riotcdn.net",
+        "tftactics.gg",
+        "steampowered.com",
+        "steamcontent.com",
+        "steamstatic.com",
+        "steamcommunity.com",
+        "roblox.com",
+        "rbxcdn.com"
+      ],
+
+      "domain_suffix": [
+        "garena.com",
+        "garena.co.th",
+        "rov.in.th",
+        "rov.garena.in.th",
+        "aov.garena.com",
+        "pubgmobile.com",
+        "igamecj.com",
+        "riotgames.com",
+        "leagueoflegends.com",
+        "riotcdn.net",
+        "tftactics.gg",
+        "steampowered.com",
+        "steamcontent.com",
+        "steamstatic.com",
+        "steamcommunity.com",
+        "roblox.com",
+        "rbxcdn.com"
+      ],
+
+      "domain_keyword": [
+        "rov",
+        "garena",
+        "aov",
+        "pubg",
+        "battlegrounds",
+        "igamecj",
+        "mlbb",
+        "mobilelegends",
+        "riot",
+        "lol",
+        "leagueoflegends",
+        "tft",
+        "riotcdn",
+        "steam",
+        "steampowered",
+        "steamcontent",
+        "steamstatic",
+        "roblox",
+        "rbxcdn"
+      ],
+
+      "domain_regex": [
+        "(?i)(?:^|\\.)(?:rov|garena|aov|pubg|battlegrounds|igamecj|mlbb|mobilelegends|riot|lol|leagueoflegends|tft|riotcdn|steam|steampowered|steamcontent|steamstatic|roblox|rbxcdn)(?:\\.|$)"
+      ]
+    },
+    {
+      "outbound": "direct",
+      "name": "bbb",
+      "switch": true,
+      "or": true,
+
+      "domain": [
+        "api.newnext.krungthai.com",
+        "api.ktb.co.th",
+        "api.kasikornbank.co.th",
+        "kasikornbanklifestyle.com",
+        "kasikornbankpubliccompany.sc.omtrdc.net",
+        "mymo.gsb.or.th",
+        "rt10.kasikornbank.com",
+        "mtalk.google.com"
+      ],
+
+      "domain_suffix": [
+        "krungthai.com",
+        "ktb.co.th",
+        "kbank.co.th",
+        "scb.co.th",
+        "krungsri.com",
+        "bangkokbank.com",
+        "bbl.co.th",
+        "ttb.co.th",
+        "kkp.co.th",
+        "tisco.co.th",
+        "truemoney.com",
+        "tmn.app",
+        "scb.co",
+        "kbank.co",
+        "bbl.co",
+        "googleapis.com",
+        "gstatic.com",
+        "firebase.googleapis.com",
+        "play.googleapis.com",
+        "play-fe.googleapis.com",
+        "i.ytimg.com",
+        "storage.googleapis.com",
+        "youtube.com",
+        "youtubei.googleapis.com"
+      ],
+
+      "domain_keyword": [
+        "scb",
+        "kbank",
+        "ktb",
+        "ttb",
+        "gsb",
+        "mymo",
+        "krungthai",
+        "kasikorn",
+        "kasikornbank",
+        "bangkokbank",
+        "bbl",
+        "krungsri",
+        "kkp",
+        "tisco",
+        "truemoney",
+        "tmn",
+        "truewallet",
+        "uob",
+        "cimb",
+        "lh",
+        "icbc",
+        "wallet",
+        "kma",
+        "kkpmobile",
+        "tmbtouch",
+        "nebula",
+        "karing",
+        "next",
+        "bank"
+      ],
+
+      "domain_regex": [
+        "(?i)(?:^|\\.)(?:scb|kbank|ktb|ttb|gsb|mymo|krungthai|kasikorn|kasikornbank|bangkokbank|bbl|krungsri|kkp|tisco|truemoney|tmn|truewallet)(?:\\.|$)"
+      ]
+    },
+    {
+      "outbound": "direct",
+      "name": "STREAMING",
+      "switch": true,
+      "or": true,
+
+      "domain": [
+        "video.google.com"
+      ],
+
+      "domain_suffix": [
+        "netflix.com",
+        "netflix.net",
+        "nflxvideo.net",
+        "video.google.com",
+        "youtube.com",
+        "googlevideo.com",
+        "ytimg.com",
+        "telegram.org",
+        "t.me",
+        "telegram-cdn.org",
+        "tiktok.com",
+        "tiktokcdn.com",
+        "ibytedtos.com",
+        "ibyteimg.com",
+        "byteoversea.com"
+      ],
+
+      "domain_keyword": [
+        "youtube",
+        "netflix",
+        "twitch",
+        "m3u8",
+        "hls",
+        "primevideo",
+        "disney",
+        "hotstar",
+        "spotify",
+        "apple",
+        "telegram",
+        "tiktok"
+      ],
+
+      "domain_regex": [
+        "(?i)(?:^|\\.)(?:youtube|netflix|twitch|m3u8|hls|primevideo|disney|hotstar|spotify|apple|telegram|tiktok)(?:\\.|$)"
+      ]
+    },
+    {
+      "outbound": "direct",
+      "name": "BALANCED",
+      "switch": true,
+      "or": true,
+
+      "domain_keyword": [
+        "*"
+      ],
+
+      "domain_regex": [
+        ".*"
+      ]
+    }
+  ]
 }
