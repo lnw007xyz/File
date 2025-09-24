@@ -1,0 +1,227 @@
+{
+  "rules": [
+    {
+      "outbound": "direct",
+      "name": "bank",
+      "switch": true,
+      "or": false,
+      "domain_keyword": [
+        "gsb"
+      ],
+      "rule_set": [
+        "https://raw.githubusercontent.com/lnw007xyz/File/main/singbox_1.6.1_rules_only.json"
+      ]
+    },
+    {
+      "outbound": "direct",
+      "name": "Gaming",
+      "switch": true,
+      "or": true,
+
+      "domain": [
+        "rov.garena.in.th",
+        "aov.garena.com",
+        "api.garena.com",
+        "pubgmobile.com",
+        "igamecj.com",
+        "riotgames.com",
+        "leagueoflegends.com",
+        "riotcdn.net",
+        "tftactics.gg",
+        "steampowered.com",
+        "steamcontent.com",
+        "steamstatic.com",
+        "steamcommunity.com",
+        "roblox.com",
+        "rbxcdn.com"
+      ],
+
+      "domain_suffix": [
+        "garena.com",
+        "garena.co.th",
+        "rov.in.th",
+        "rov.garena.in.th",
+        "aov.garena.com",
+        "pubgmobile.com",
+        "igamecj.com",
+        "riotgames.com",
+        "leagueoflegends.com",
+        "riotcdn.net",
+        "tftactics.gg",
+        "steampowered.com",
+        "steamcontent.com",
+        "steamstatic.com",
+        "steamcommunity.com",
+        "roblox.com",
+        "rbxcdn.com"
+      ],
+
+      "domain_keyword": [
+        "rov",
+        "garena",
+        "aov",
+        "pubg",
+        "battlegrounds",
+        "igamecj",
+        "mlbb",
+        "mobilelegends",
+        "riot",
+        "lol",
+        "leagueoflegends",
+        "tft",
+        "riotcdn",
+        "steam",
+        "steampowered",
+        "steamcontent",
+        "steamstatic",
+        "roblox",
+        "rbxcdn"
+      ],
+
+      "domain_regex": [
+        "(?i)(?:^|\\.)(?:rov|garena|aov|pubg|battlegrounds|igamecj|mlbb|mobilelegends|riot|lol|leagueoflegends|tft|riotcdn|steam|steampowered|steamcontent|steamstatic|roblox|rbxcdn)(?:\\.|$)"
+      ]
+    },
+    {
+      "outbound": "direct",
+      "name": "bbb",
+      "switch": true,
+      "or": true,
+
+      "domain": [
+        "api.newnext.krungthai.com",
+        "api.ktb.co.th",
+        "api.kasikornbank.co.th",
+        "kasikornbanklifestyle.com",
+        "kasikornbankpubliccompany.sc.omtrdc.net",
+        "mymo.gsb.or.th",
+        "rt10.kasikornbank.com",
+        "mtalk.google.com"
+      ],
+
+      "domain_suffix": [
+        "krungthai.com",
+        "ktb.co.th",
+        "kbank.co.th",
+        "scb.co.th",
+        "krungsri.com",
+        "bangkokbank.com",
+        "bbl.co.th",
+        "ttb.co.th",
+        "kkp.co.th",
+        "tisco.co.th",
+        "truemoney.com",
+        "tmn.app",
+        "scb.co",
+        "kbank.co",
+        "bbl.co",
+        "googleapis.com",
+        "gstatic.com",
+        "firebase.googleapis.com",
+        "play.googleapis.com",
+        "play-fe.googleapis.com",
+        "i.ytimg.com",
+        "storage.googleapis.com",
+        "youtube.com",
+        "youtubei.googleapis.com"
+      ],
+
+      "domain_keyword": [
+        "scb",
+        "kbank",
+        "ktb",
+        "ttb",
+        "gsb",
+        "mymo",
+        "krungthai",
+        "kasikorn",
+        "kasikornbank",
+        "bangkokbank",
+        "bbl",
+        "krungsri",
+        "kkp",
+        "tisco",
+        "truemoney",
+        "tmn",
+        "truewallet",
+        "uob",
+        "cimb",
+        "lh",
+        "icbc",
+        "wallet",
+        "kma",
+        "kkpmobile",
+        "tmbtouch",
+        "nebula",
+        "karing",
+        "next",
+        "bank"
+      ],
+
+      "domain_regex": [
+        "(?i)(?:^|\\.)(?:scb|kbank|ktb|ttb|gsb|mymo|krungthai|kasikorn|kasikornbank|bangkokbank|bbl|krungsri|kkp|tisco|truemoney|tmn|truewallet)(?:\\.|$)"
+      ]
+    },
+    {
+      "outbound": "direct",
+      "name": "STREAMING",
+      "switch": true,
+      "or": true,
+
+      "domain": [
+        "video.google.com"
+      ],
+
+      "domain_suffix": [
+        "netflix.com",
+        "netflix.net",
+        "nflxvideo.net",
+        "video.google.com",
+        "youtube.com",
+        "googlevideo.com",
+        "ytimg.com",
+        "telegram.org",
+        "t.me",
+        "telegram-cdn.org",
+        "tiktok.com",
+        "tiktokcdn.com",
+        "ibytedtos.com",
+        "ibyteimg.com",
+        "byteoversea.com"
+      ],
+
+      "domain_keyword": [
+        "youtube",
+        "netflix",
+        "twitch",
+        "m3u8",
+        "hls",
+        "primevideo",
+        "disney",
+        "hotstar",
+        "spotify",
+        "apple",
+        "telegram",
+        "tiktok"
+      ],
+
+      "domain_regex": [
+        "(?i)(?:^|\\.)(?:youtube|netflix|twitch|m3u8|hls|primevideo|disney|hotstar|spotify|apple|telegram|tiktok)(?:\\.|$)"
+      ]
+    },
+    {
+      "outbound": "direct",
+      "name": "BALANCED",
+      "switch": true,
+      "or": true,
+
+      "domain_keyword": [
+        "*"
+      ],
+
+      "domain_regex": [
+        ".*"
+      ]
+    }
+  ]
+}
